@@ -1,0 +1,8 @@
+CREATE TABLE piirto (
+    id   INTEGER         PRIMARY KEY AUTOINCREMENT
+                         UNIQUE
+                         NOT NULL,
+    nimi VARCHAR (50)    DEFAULT nimeton,
+    kuva VARCHAR (90000) NOT NULL,
+    aika DATETIME        NOT NULL
+);
