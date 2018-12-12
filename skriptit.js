@@ -179,18 +179,18 @@ function haePaiva(){
 function haeHistoria(){
     $("#historiaLista").html("");
     $.ajax({
-            type:"GET",
-            url: "PALVELIN_URL/haePiirto.php",
-            dataType: "json",
-            timeout: 4000}
-        ).done(function(result){
-            $.each(result, function(index, value){
-                $("#historiaLista").append("<li class='ui-grid-a'><div class='ui-block-a'><img src=" + value.kuva + " class='kuvalista'></div><div class='ui-block-b'>" + value.nimi + "<br>" + value.aika + "<br><a href='#' value=" + value.id + " class='poista' data-role='button' style='background-color: coral;'>Poista</a><br><a href='#' value=" + value.id + " class='muuta' data-role='button' style='background-color: yellow;'>Muuta nimi</a></div></li>").enhanceWithin();
-            })}
+        type:"GET",
+        url: "PALVELIN_URL/haePiirto.php",
+        dataType: "json",
+        timeout: 4000}
+    ).done(function(result){
+        $.each(result, function(index, value){
+            $("#historiaLista").append("<li class='ui-grid-a'><div class='ui-block-a'><img src=" + value.kuva + " class='kuvalista'></div><div class='ui-block-b'>" + value.nimi + "<br>" + value.aika + "<br><a href='#' value=" + value.id + " class='poista' data-role='button' style='background-color: coral;'>Poista</a><br><a href='#' value=" + value.id + " class='muuta' data-role='button' style='background-color: yellow;'>Muuta nimi</a></div></li>").enhanceWithin();
+        })}
 
-        ).fail(function(err){
-            alert("virhe: " + err.status + " " + err.statusText);
-        })
+    ).fail(function(err){
+        alert("virhe: " + err.status + " " + err.statusText);
+    })
 }
 
 $(document).on("tap", ".poista", function(event) {
@@ -214,14 +214,14 @@ $(document).on("tap", ".poista", function(event) {
 
 var uusinimi;
 $(document).on("tap", ".muuta", function(event) {
-			var muuta = $(this).attr("value");
-            uusinimi=prompt("Anna uusi nimi");
-                if(uusinimi === null){
-                    return;
-                } else{
-                    console.log(uusinimi);
-                    paivita(muuta);
-                }
+    var muuta = $(this).attr("value");
+    uusinimi=prompt("Anna uusi nimi");
+        if(uusinimi === null){
+            return;
+        } else{
+            console.log(uusinimi);
+            paivita(muuta);
+        }
 });
 
 function paivita(muuta){
