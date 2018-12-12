@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="utf-8" />
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="msapplication-tap-highlight" content="no" />
+	<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+	<meta http-equiv="Content-Security-Policy" content="
+			default-src 'self' 'unsafe-inline' ws://SISÄVERKKO:PORTTI PALVELIN_URL http://code.jquery.com https://code.jquery.com https://ssl.gstatic.com gap: data: blob: filesystem: ; " />
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+	<script src="https://code.jquery.com/jquery-2.1.4.js" integrity="sha256-siFczlgw4jULnUICcdm9gjQPZkw/YPDqhQ9+nAOScE4="	crossorigin="anonymous"></script>
+	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    
+    <script src="skriptit.js"></script>
+    <script src="cordova.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+<body>
+    <!--menuvalikko----------------------------------------------------------------->
+	<div data-role="popup" id="popupMenu" data-transition="pop" data-theme="a">
+		<ul data-role="listview">
+			<li><a href="#etusivu" id="etusivuLinkki">Etusivu</a></li>			
+			<li><a href="#piirra" id="piirraLinkki">Piirrä</a></li>
+			<li><a href="#historia" id="historiaLinkki">Historia</a></li>
+		</ul>
+	</div>
+    
+    <!--etusivu--------------------------------------------------------------------->
+    <div data-role="page" id="etusivu" class="etusivu">	
+		<div data-role="header">
+            <a href="#popupMenu" data-rel="popup" data-transition="flip" class="ui-btn ui-btn-inline  ui-corner-all ui-icon-bars ui-btn-icon-notext">Menu</a>
+            <h1>Etusivu</h1>
+            <a id="sulje" data-role="button" class="ui-btn ui-icon-delete ui-btn-icon-left">Sulje</a>
+        </div>
+        <div data-role="main" class="ui-content">
+            <h3>Piirrä Jackson Pollockin hengessä</h3>
+            <br>
+            <p>
+                Tervetuloa piirtämään käyttäen puhelimen kiihtyvyysanturia.<br>
+                Kuvioiden hallinta voi olla haastavaa!<br>
+                Saat keskitettyä piirron lähtöpisteen näpäyttämällä ruutua.<br>
+            </p>
+        </div>
+        <div data-role="footer" data-position="fixed" class="etusivu">
+            <h2><a href="#piirra">Piirrä ilmaan!</a></h2>
+        </div>
+	</div>
+    
+    <!--piirrustussivu-------------------------------------------------------------->
+	<div data-role="page" id="piirra">
+		<div data-role="header">
+			<a href="#popupMenu" data-rel="popup" data-transition="flip" class="ui-btn ui-btn-inline  ui-corner-all ui-icon-bars ui-btn-icon-notext">Menu</a>
+			<h1>Piirrä ilmaan</h1>
+		</div>
+		<div data-role="main" class="ui-content">
+            <canvas id="piirraAlusta"></canvas>
+   		</div>
+        <div class="piirtonapit">
+            <button class="ui-btn ui-btn-inline ui-corner-all tyhjenna" onClick=tyhjenna()>Tyhjennä</button>
+            <button id="tallennaNappi" class="ui-btn ui-btn-inline ui-corner-all tallenna">Tallenna</button>
+        </div>
+        <div class="controls" data-role="footer" data-position="fixed">
+           <ul>
+            <li class="purple selected"></li>
+            <li class="darkblue"></li>
+			<li class="green"></li>
+			<li class="pink"></li>
+            <li class="brown"></li>
+		  </ul>
+		</div>
+	</div>
+	
+	<!--historiasivu-------------------------------------------------------------------->
+	<div data-role="page" id="historia" class="historia">
+		<div data-role="header">
+			<a href="#popupMenu" data-rel="popup" data-transition="flip" class="ui-btn ui-btn-inline  ui-corner-all ui-icon-bars ui-btn-icon-notext">Menu</a>
+			<h1>Historia</h1>
+		</div>
+        <!--grid jakaa sivun kahteen puoliskoon-->
+        <div data-role="main" class="ui-content">               
+            <ul data-role="listview" id="historiaLista" data-inset="true"></ul>
+        </div>
+	</div>
+</body>
+</html>
+
+<!--<div>-------------DEBUG-LAATIKKO-----Sijoita tarvitsemalle sivulle
+    <input type="checkbox" id="check" checked="checked" style="display: block;">
+    <br>
+    <div id="debug" style="height: 4em; overflow: scroll; width: 100%; border: 1px solid black;">&nbsp;</div>
+</div>--> 
